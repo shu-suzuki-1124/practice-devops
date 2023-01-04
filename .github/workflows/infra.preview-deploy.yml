@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 10_infra/**
-      - github/workflows/**
+      - .github/workflows/**
   workflow_dispatch:
 
 permissions:
@@ -43,3 +43,6 @@ jobs:
           role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }}
       - name: terraform init
         run: terraform init -no-color
+      - name: terraform validate
+        run: |
+          terraform validate -no-color
